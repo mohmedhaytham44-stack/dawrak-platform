@@ -1,0 +1,250 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#1555a5">
+<title>دورك | وقتك أغلى من الانتظار</title>
+<style>
+:root{--blue:#1555a5;--blue2:#2475ce;--ink:#172033;--muted:#687386;--bg:#f4f7fb;--line:#e4eaf2;--green:#16845b;--amber:#a96a08;--red:#c33d49}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font-family:Tahoma,Arial,sans-serif}
+button,input,select{font:inherit}button{cursor:pointer;border:0;border-radius:12px;padding:12px 16px;font-weight:700}
+.primary{background:var(--blue);color:white}.secondary{background:#e9f1fc;color:var(--blue)}.danger{background:#fff0f1;color:var(--red)}.ghost{background:transparent;color:var(--muted);border:1px solid var(--line)}
+header{background:white;border-bottom:1px solid var(--line);position:sticky;top:0;z-index:5}
+.nav{max-width:1120px;margin:auto;padding:14px 20px;display:flex;align-items:center;justify-content:space-between;gap:14px}
+.logo{font-size:25px;font-weight:900;color:var(--blue);letter-spacing:-1px}.logo span{color:#f0a72e}
+nav{display:flex;gap:8px;flex-wrap:wrap}nav button{background:transparent;color:#536176;padding:10px 12px}nav button.active{background:#eaf2fc;color:var(--blue)}
+main{max-width:1120px;margin:28px auto;padding:0 20px 60px}
+.hero{background:linear-gradient(120deg,#103f80,#2475ce);color:white;border-radius:24px;padding:34px;display:grid;grid-template-columns:1.3fr .7fr;gap:25px;align-items:center;overflow:hidden}
+.hero h1{font-size:clamp(30px,5vw,48px);margin:10px 0}.hero p{color:#dceaff;line-height:1.9;max-width:580px}.hero .tag{color:#cfe2ff;font-size:13px;font-weight:bold}
+.hero-card{background:white;color:var(--ink);border-radius:18px;padding:20px;box-shadow:0 16px 40px #092b5c55}
+.hero-card .big{font-size:42px;color:var(--blue);font-weight:900}.muted{color:var(--muted)}.small{font-size:12px}
+.section-head{display:flex;justify-content:space-between;align-items:end;margin:30px 0 15px;gap:12px}.section-head h2{margin:0;font-size:23px}.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:15px}
+.card{background:white;border:1px solid var(--line);border-radius:18px;padding:18px;box-shadow:0 5px 20px #182d4a08}
+.shop-icon{width:46px;height:46px;border-radius:14px;background:#eaf2fc;display:grid;place-items:center;font-size:23px}.shop-photo{width:100%;height:165px;object-fit:cover;border-radius:13px;background:#eaf2fc}.shop-card{overflow:hidden}.shop-card .shop-photo{margin:-2px 0 10px}.detail-cover{width:100%;height:220px;object-fit:cover;border-radius:15px;background:#eaf2fc}.service-list,.offer-list{display:grid;gap:9px;margin:12px 0}.service,.offer{display:flex;justify-content:space-between;gap:10px;padding:12px;background:#f6f8fb;border-radius:11px}.offer{background:#fff7e8;border:1px solid #f3dfb3}.admin-actions{display:flex;gap:8px;flex-wrap:wrap}.image-help{font-size:11px;color:var(--muted);line-height:1.7}.empty-image{height:165px;border-radius:13px;background:linear-gradient(135deg,#eaf2fc,#d7e7fa);display:grid;place-items:center;font-size:42px;color:#1555a5}
+.shop-card h3{margin:13px 0 6px}.shop-card p{margin:0 0 14px;line-height:1.7;color:var(--muted);font-size:13px}
+.meta{display:flex;gap:12px;flex-wrap:wrap;color:var(--muted);font-size:12px;margin-bottom:14px}
+.badge{display:inline-block;padding:5px 9px;border-radius:20px;background:#eaf7f1;color:var(--green);font-size:11px;font-weight:bold}
+.row{display:flex;align-items:center;justify-content:space-between;gap:12px}.stack{display:grid;gap:12px}
+.panel{background:white;border:1px solid var(--line);border-radius:20px;padding:22px}
+.hidden{display:none!important}
+label{font-size:13px;font-weight:bold;display:block;margin:12px 0 7px}
+input,select{width:100%;padding:13px;border:1px solid #dce3ed;border-radius:11px;background:white;outline:none}
+input:focus,select:focus{border-color:var(--blue2);box-shadow:0 0 0 3px #2475ce18}
+.formgrid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.ticket{text-align:center;padding:25px;background:#f1f6fd;border:1px dashed #a8c5e9;border-radius:18px}
+.ticket-num{font-size:58px;font-weight:900;color:var(--blue);line-height:1.3}
+.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:18px 0}
+.stat{background:#f6f8fb;padding:15px;border-radius:14px}.stat strong{font-size:25px;display:block;color:var(--blue)}
+.queue-item{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:13px 0;border-bottom:1px solid var(--line)}
+.queue-item:last-child{border:0}.pill{font-size:11px;padding:5px 9px;border-radius:20px;background:#fff5df;color:var(--amber)}
+footer{text-align:center;color:var(--muted);font-size:12px;padding:25px}
+.toast{position:fixed;bottom:20px;left:20px;background:#172033;color:white;padding:13px 18px;border-radius:12px;box-shadow:0 8px 25px #0002;z-index:10}
+.tabs{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:18px}
+.tabs button{background:white;border:1px solid var(--line);color:var(--muted)}
+.tabs button.active{background:#eaf2fc;color:var(--blue);border-color:#c8dcf6}
+.owner-section{margin-top:22px;padding-top:18px;border-top:1px solid var(--line)}.thumb-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(110px,1fr));gap:10px;margin-top:12px}.thumb{position:relative}.thumb img{width:100%;height:100px;object-fit:cover;border-radius:10px}.thumb button{position:absolute;top:5px;left:5px;padding:5px 8px;border-radius:8px}.offer-manage{padding:12px;border:1px solid var(--line);border-radius:12px;margin:8px 0;background:#fff}.status-closed{background:#fff0f1;color:#b42332}.status-open{background:#eaf7f1;color:var(--green)}.review{padding:13px;background:#f6f8fb;border-radius:12px;margin:9px 0}.review textarea{width:100%;padding:10px;border:1px solid #dce3ed;border-radius:9px;font:inherit}.wait-box{background:#eef5ff;border:1px solid #cfe0f6;border-radius:14px;padding:14px;margin:14px 0}.note{padding:13px 15px;background:#fff8e9;border:1px solid #f3dfb3;color:#79510e;border-radius:12px;font-size:12px;line-height:1.8}
+@media(max-width:760px){.hero{grid-template-columns:1fr;padding:24px}.grid{grid-template-columns:1fr}.formgrid{grid-template-columns:1fr}.stats{grid-template-columns:1fr 1fr}.nav{align-items:flex-start;flex-direction:column}main{margin-top:18px}}
+
+/* الوضع الداكن */
+:root[data-theme="dark"]{color-scheme:dark;--ink:#e8edf5;--muted:#a8b3c5;--bg:#101722;--line:#2a3749;--green:#55c99a;--amber:#f0bd61;--red:#ff7b86}
+:root[data-theme="dark"] body{background:var(--bg);color:var(--ink)}
+:root[data-theme="dark"] header,:root[data-theme="dark"] .card,:root[data-theme="dark"] .panel,:root[data-theme="dark"] .hero-card,:root[data-theme="dark"] .tabs button,:root[data-theme="dark"] .offer-manage{background:#192433;color:var(--ink);border-color:var(--line)}
+:root[data-theme="dark"] nav button{color:#c0cada}
+:root[data-theme="dark"] nav button.active,:root[data-theme="dark"] .tabs button.active{background:#243b58;color:#9bc7ff;border-color:#355477}
+:root[data-theme="dark"] input,:root[data-theme="dark"] select,:root[data-theme="dark"] textarea{background:#111c29;color:var(--ink);border-color:#354357}
+:root[data-theme="dark"] .secondary{background:#243b58;color:#b7d5ff}
+:root[data-theme="dark"] .danger{background:#48252d;color:#ffabb2}
+:root[data-theme="dark"] .ghost{color:var(--muted);border-color:var(--line)}
+:root[data-theme="dark"] .service,:root[data-theme="dark"] .stat,:root[data-theme="dark"] .review,:root[data-theme="dark"] .queue-item{background:#202c3b;color:var(--ink);border-color:var(--line)}
+:root[data-theme="dark"] .offer{background:#3a3020;border-color:#65502c;color:#f6dfb3}
+:root[data-theme="dark"] .ticket,:root[data-theme="dark"] .wait-box{background:#1c3048;border-color:#355477;color:var(--ink)}
+:root[data-theme="dark"] .note{background:#3b321f;border-color:#68552c;color:#f1d99f}
+:root[data-theme="dark"] .shop-icon,:root[data-theme="dark"] .empty-image{background:#243b58;color:#b7d5ff}
+:root[data-theme="dark"] .status-closed{background:#48252d;color:#ffabb2}
+:root[data-theme="dark"] .status-open{background:#193d32;color:#8de0bd}
+:root[data-theme="dark"] .pill{background:#44371f;color:#f5d18a}
+:root[data-theme="dark"] footer{color:var(--muted)}
+.theme-toggle{white-space:nowrap;background:#e9f1fc;color:#1555a5;border:1px solid #c8dcf6;padding:9px 12px}
+:root[data-theme="dark"] .theme-toggle{background:#243b58;color:#c5dcff;border-color:#355477}
+@media(max-width:760px){.theme-toggle{align-self:flex-start}}
+</style>
+</head>
+<body>
+<header><div class="nav">
+ <div class="logo">دور<span>ك</span></div>
+ <nav>
+  <button class="active" data-page="home">الرئيسية</button>
+  <button data-page="customer">حجز دور</button>
+  <button data-page="shop">لوحة المحل</button>
+  <button data-page="admin">الإدارة</button>
+  <button id="themeToggle" class="theme-toggle" type="button" onclick="toggleTheme()">🌙 الوضع الداكن</button>
+ </nav>
+</div></header>
+<main>
+<section id="home">
+ <div class="hero">
+  <div><div class="tag">نظام طوابير بسيط للمحلات والخدمات</div><h1>وقتك أغلى من الانتظار.</h1>
+  <p>احجز دورك من موبايلك، تابع الطابور، وروح للمحل في الوقت المناسب. من غير تنزيل تطبيق.</p>
+  <button class="primary" onclick="showPage('customer')">احجز دورك الآن ←</button></div>
+  <div class="hero-card"><div class="small muted">مثال على بطاقة الدور</div><div class="big">#08</div><b>محل حلاقة أحمد</b><div class="row" style="margin-top:15px"><span class="muted small">منتظرين قبلك</span><b>3 أشخاص</b></div><div class="row" style="margin-top:8px"><span class="muted small">الانتظار التقديري</span><b>25 دقيقة</b></div></div>
+ </div>
+ <div class="section-head"><div><h2>محلات متاحة للتجربة في حلوان</h2><span class="muted small">حلاقين رجالي وصالونات تجميل</span></div><span class="badge">حلوان — المرحلة الأولى</span></div>
+ <div class="grid" id="homeShops"></div>
+ <div class="note" style="margin-top:20px">نسخة عرض تجريبية: الحجوزات تُحفظ محليًا على نفس المتصفح. لم يتم ربطها بعد بخادم أو قاعدة بيانات مشتركة.</div>
+</section>
+
+<section id="customer" class="hidden">
+ <div class="section-head"><div><h2>احجز دورك</h2><div class="muted small">اختار المحل وبيانات الحجز</div></div><span class="badge">بدون تنزيل تطبيق</span></div>
+ <div class="panel" id="bookingForm">
+  <div class="formgrid">
+   <div><label>نوع المكان</label><select id="customerCategory" onchange="fillSelects();updateBookingEstimate()"><option value="all">كل الأماكن</option><option value="حلاقة رجالي">حلاقة رجالي</option><option value="صالون تجميل">صالونات تجميل</option></select></div>
+   <div><label>اختار المحل</label><select id="shopSelect"></select></div>
+   <div><label>اسمك</label><input id="customerName" placeholder="مثال: محمد"></div>
+  </div>
+  <label>رقم الموبايل (اختياري في النموذج التجريبي)</label><input id="customerPhone" placeholder="01xxxxxxxxx" inputmode="tel">
+  <div id="bookingEstimate" class="wait-box">اختار محلًا لعرض وقت الانتظار المتوقع.</div><p class="muted small">بإرسال الطلب، هيظهر لك رقم دورك وحالة الانتظار.</p>
+  <button class="primary" onclick="book()">تأكيد حجز الدور</button>
+ </div>
+ <div id="ticketResult" class="panel hidden" style="margin-top:16px"></div>
+</section>
+
+<section id="shop" class="hidden">
+ <div class="section-head"><div><h2>لوحة صاحب المحل</h2><div class="muted small">إدارة الطابور الحالي</div></div><span class="badge">وضع تجريبي</span></div>
+ <div class="panel">
+  <div class="row"><div><b id="dashShopName">محل حلاقة أحمد</b><div class="muted small">إدارة العملاء والأدوار</div></div><select id="dashShopSelect" style="max-width:220px" onchange="renderDashboard()"></select></div>
+  <div class="formgrid" style="margin-top:16px"><div><label>حالة المحل</label><select id="shopOpenState" onchange="updateShopState()"><option value="open">مفتوح</option><option value="closed">مغلق</option></select></div><div><label>استقبال الحجوزات</label><select id="shopBookingState" onchange="updateShopState()"><option value="yes">يستقبل حجوزات</option><option value="no">إيقاف الحجوزات مؤقتًا</option></select></div><div><label>عدد العاملين المتاحين</label><input id="shopWorkers" type="number" min="1" max="30" value="1" onchange="updateShopState()"></div></div><div class="muted small">تغيير حالة المحل منفصل عن إيقاف الحجوزات؛ يمكن أن يكون المحل مفتوحًا مع إيقاف الحجز مؤقتًا.</div>
+  <div class="owner-section">
+   <h3>صور المحل والخدمات</h3>
+   <p class="muted small">ارفع صورًا من جهازك. ستظهر الصور للعملاء في صفحة المحل. يُفضّل اختيار صور واضحة بحجم مناسب.</p>
+   <label for="ownerPhotos">اختيار صور (يمكن اختيار أكثر من صورة)</label>
+   <input id="ownerPhotos" type="file" accept="image/*" multiple onchange="uploadShopPhotos(this.files)">
+   <div id="ownerPhotoGallery" class="thumb-grid"></div>
+  </div>
+  <div class="owner-section">
+   <h3>إدارة العروض والخصومات</h3>
+   <div class="formgrid">
+    <div><label for="ownerOfferTitle">اسم العرض</label><input id="ownerOfferTitle" placeholder="مثال: خصم 20% على قص الشعر"></div>
+    <div><label for="ownerOfferEnd">تاريخ انتهاء العرض</label><input id="ownerOfferEnd" type="date"></div>
+    <div><label for="ownerOfferOldPrice">السعر قبل الخصم (اختياري)</label><input id="ownerOfferOldPrice" placeholder="150 جنيه"></div>
+    <div><label for="ownerOfferNewPrice">السعر بعد الخصم (اختياري)</label><input id="ownerOfferNewPrice" placeholder="120 جنيه"></div>
+   </div>
+   <label for="ownerOfferDesc">تفاصيل العرض</label><input id="ownerOfferDesc" placeholder="اكتب شروط العرض أو الخدمات المشمولة">
+   <label for="ownerOfferImage">صورة العرض (اختياري)</label><input id="ownerOfferImage" type="file" accept="image/*">
+   <button class="primary" style="margin-top:12px" onclick="addOwnerOffer()">إضافة العرض</button>
+   <div id="ownerOffersList" style="margin-top:12px"></div>
+  </div>
+  <div class="stats">
+   <div class="stat"><strong id="waitingCount">0</strong><span class="small muted">في الانتظار</span></div>
+   <div class="stat"><strong id="servedCount">0</strong><span class="small muted">تمت خدمتهم</span></div>
+   <div class="stat"><strong id="currentNumber">—</strong><span class="small muted">الدور الحالي</span></div>
+  </div>
+  <div class="row" style="margin:18px 0"><h3 style="margin:0">الطابور</h3><button class="secondary" onclick="addWalkin()">+ إضافة عميل حضوري</button></div>
+  <div id="queueList"></div><div class="section-head"><h3>ملاحظات العملاء والرد عليها</h3></div><div id="ownerReviews"></div>
+  <div class="row" style="margin-top:18px;justify-content:flex-start;flex-wrap:wrap">
+   <button class="primary" onclick="callNext()">استدعاء التالي</button>
+   <button class="ghost" onclick="resetQueue()">إنهاء اليوم / تصفير الطابور</button>
+  </div>
+ </div>
+</section>
+
+<section id="admin" class="hidden">
+ <div class="section-head"><div><h2>لوحة الإدارة</h2><div class="muted small">نظرة عامة على نسخة العرض</div></div><span class="badge">للمؤسس</span></div>
+ <div class="panel" id="founderCategoriesPanel">
+  <h3>إدارة أنواع المحلات — صلاحية المؤسس</h3>
+  <p class="muted small">من هنا تقدر تضيف أي نشاط جديد لدورك. الأنواع التي تضيفها ستظهر تلقائيًا في تصفح العملاء ونموذج إضافة المحلات.</p>
+  <div class="formgrid"><div><label for="founderNewCategory">اسم نوع المحل الجديد</label><input id="founderNewCategory" placeholder="مثال: مغسلة سيارات"></div><div style="display:flex;align-items:end"><button class="primary" onclick="addBusinessCategory()">إضافة نوع المحل</button></div></div>
+  <div id="founderCategoryList" style="margin-top:12px"></div>
+ </div>
+ <div class="stats">
+  <div class="stat"><strong id="adminShops">0</strong><span class="small muted">عدد المحلات</span></div>
+  <div class="stat"><strong id="adminTickets">0</strong><span class="small muted">إجمالي الحجوزات</span></div>
+  <div class="stat"><strong id="adminActive">0</strong><span class="small muted">في الانتظار</span></div>
+ </div>
+ <div class="panel">
+  <h3 id="shopFormTitle">إضافة محل جديد</h3>
+  <div class="formgrid"><div><label>اسم المحل</label><input id="newShopName" placeholder="مثال: حلاقة أحمد"></div><div><label>المنطقة / العنوان</label><input id="newShopArea" placeholder="مثال: حلوان - شارع منصور"></div></div>
+  <div class="formgrid"><div><label>نوع النشاط</label><select id="newShopType"></select></div><div><label>متوسط مدة الخدمة بالدقائق</label><input id="newShopDuration" type="number" min="5" value="20"></div></div>
+  <label>رابط صورة المحل (اختياري)</label><input id="newShopPhoto" type="url" placeholder="https://example.com/shop.jpg"><p class="image-help">استخدم رابط صورة مباشر يبدأ بـ https:// لعرض صورة المحل.</p>
+  <label>رابط صورة الغلاف أو صورة الحلاق (اختياري)</label><input id="newShopCover" type="url" placeholder="https://example.com/barber.jpg">
+  <label>وصف المحل</label><input id="newShopDescription" placeholder="اكتب نبذة عن المكان والخدمات المميزة">
+  <label>الخدمات والأسعار — كل خدمة في سطر بالشكل: قص شعر | 100</label><textarea id="newShopServices" rows="3" style="width:100%;padding:13px;border:1px solid #dce3ed;border-radius:11px;font:inherit" placeholder="قص شعر | 100
+حلاقة ذقن | 60
+غسيل شعر | 40"></textarea>
+  <label>العروض والخصومات — كل عرض في سطر</label><textarea id="newShopOffers" rows="2" style="width:100%;padding:13px;border:1px solid #dce3ed;border-radius:11px;font:inherit" placeholder="خصم 20% على الحلاقة يوم الأحد
+قص شعر + ذقن بسعر 130 جنيه"></textarea>
+  <div class="admin-actions" style="margin-top:14px"><button class="primary" onclick="addShop()" id="saveShopBtn">إضافة المحل</button><button class="ghost hidden" id="cancelEditBtn" onclick="clearShopForm()">إلغاء التعديل</button></div>
+  <div class="section-head"><h3>المحلات المسجلة</h3></div><div id="adminShopList"></div>
+ </div>
+</section>
+<div id="shopDetails" class="hidden" style="position:fixed;inset:0;background:#10213c99;z-index:20;padding:18px;overflow:auto" onclick="if(event.target===this)closeDetails()"><div class="panel" style="max-width:760px;margin:30px auto;position:relative"><div class="row"><h2 id="detailName" style="margin:0">تفاصيل المحل</h2><button class="ghost" onclick="closeDetails()">إغلاق ✕</button></div><div id="detailContent" style="margin-top:16px"></div></div></div>
+</main>
+<footer>دورك © 2026 — نموذج أولي تجريبي | وقتك أغلى من الانتظار</footer>
+<div id="toast" class="toast hidden"></div>
+<script>
+const seed=[
+{id:1,name:"حلاقة تجريبية - حلوان",area:"حلوان - شارع منصور",type:"حلاقة رجالي",icon:"✂️",duration:20,photo:"",description:"بيانات توضيحية لتجربة دورك — ليست محلًا حقيقيًا.",services:[{name:"قص شعر",price:"100 جنيه"},{name:"حلاقة ذقن",price:"60 جنيه"},{name:"قص شعر + ذقن",price:"140 جنيه"}],offers:[]},
+{id:2,name:"صالون تجميل تجريبي - حلوان",area:"حلوان - شارع منصور",type:"صالون تجميل",icon:"💇‍♀️",duration:35,photo:"",description:"بيانات توضيحية لتجربة دورك — ليست صالونًا حقيقيًا.",services:[{name:"تصفيف شعر",price:"150 جنيه"},{name:"سيشوار",price:"100 جنيه"}],offers:[]}
+];
+const defaultCategories=["حلاقة رجالي","صالون تجميل"];
+let businessCategories=JSON.parse(localStorage.getItem("dawrak_categories")||"null")||defaultCategories.slice();
+function saveCategories(){localStorage.setItem("dawrak_categories",JSON.stringify(businessCategories));}
+function renderCategoryOptions(){
+ const customer=document.getElementById("customerCategory"),shopType=document.getElementById("newShopType");
+ if(customer){const current=customer.value||"all";customer.innerHTML='<option value="all">كل الأماكن</option>'+businessCategories.map(c=>`<option value="${esc(c)}">${esc(c)}</option>`).join("");if(current==="all"||businessCategories.includes(current))customer.value=current;}
+ if(shopType){const current=shopType.value;shopType.innerHTML=businessCategories.map(c=>`<option value="${esc(c)}">${esc(c)}</option>`).join("");if(businessCategories.includes(current))shopType.value=current;}
+ const list=document.getElementById("founderCategoryList");if(list)list.innerHTML=businessCategories.map(c=>{const used=shops.some(x=>x.type===c);return `<div class="queue-item"><div><b>${esc(c)}</b><div class="muted small">${used?"مرتبط بمحلات مسجلة":"لا توجد محلات بهذا التصنيف حتى الآن"}</div></div><button class="danger" ${used?'disabled title="لا يمكن حذف تصنيف مستخدم"':''} onclick="removeBusinessCategory(${JSON.stringify(c)})">حذف النوع</button></div>`}).join("");
+}
+function addBusinessCategory(){const input=document.getElementById("founderNewCategory"),name=input.value.trim();if(!name){toast("اكتب اسم نوع المحل أولًا");return;}if(businessCategories.some(c=>c.toLowerCase()===name.toLowerCase())){toast("نوع المحل موجود بالفعل");return;}businessCategories.push(name);saveCategories();input.value="";renderCategoryOptions();fillSelects();toast("تمت إضافة نوع المحل");}
+function removeBusinessCategory(name){if(shops.some(x=>x.type===name)){toast("لا يمكن حذف نوع مرتبط بمحلات مسجلة");return;}if(!confirm(`حذف نوع النشاط: ${name}؟`))return;businessCategories=businessCategories.filter(c=>c!==name);saveCategories();renderCategoryOptions();fillSelects();toast("تم حذف نوع المحل");}
+let shops=JSON.parse(localStorage.getItem("dawrak_shops")||"null")||seed;shops=shops.map(s=>({...s,services:s.services||[],offers:s.offers||[],notes:s.notes||[],photos:s.photos||[],offers:(s.offers||[]).map(o=>typeof o==="string"?{title:o,description:"",oldPrice:"",newPrice:"",endDate:"",image:""}:o),isOpen:s.isOpen!==false,accepting:s.accepting!==false,workers:Math.max(1,Number(s.workers)||1)}));
+let tickets=JSON.parse(localStorage.getItem("dawrak_tickets")||"[]");
+let nextId=Number(localStorage.getItem("dawrak_next")||1);
+let currentTicket=null;
+function save(){localStorage.setItem("dawrak_shops",JSON.stringify(shops));localStorage.setItem("dawrak_tickets",JSON.stringify(tickets));localStorage.setItem("dawrak_next",nextId)}
+function toast(s){let t=document.getElementById("toast");t.textContent=s;t.classList.remove("hidden");setTimeout(()=>t.classList.add("hidden"),2400)}
+let activeThemeRole="customer";
+function themeRoleForPage(page){return page==="shop"||page==="admin"?"owner":"customer"}
+function applyTheme(role){activeThemeRole=role;let theme=localStorage.getItem("dawrak_theme_"+role)||"light";document.documentElement.dataset.theme=theme;let btn=document.getElementById("themeToggle");if(btn)btn.textContent=theme==="dark"?"☀️ الوضع الافتراضي":"🌙 الوضع المظلم"}
+function toggleTheme(){let current=localStorage.getItem("dawrak_theme_"+activeThemeRole)||"light";let next=current==="dark"?"light":"dark";localStorage.setItem("dawrak_theme_"+activeThemeRole,next);applyTheme(activeThemeRole)}
+function showPage(p){document.querySelectorAll("main>section").forEach(x=>x.classList.add("hidden"));document.getElementById(p).classList.remove("hidden");document.querySelectorAll("nav button[data-page]").forEach(b=>b.classList.toggle("active",b.dataset.page===p));applyTheme(themeRoleForPage(p));renderAll();window.scrollTo(0,0)}
+document.querySelectorAll("nav button").forEach(b=>b.onclick=()=>showPage(b.dataset.page));
+function estimateWait(shop){let q=tickets.filter(t=>t.shopId===shop.id&&t.status==="waiting").length;return Math.ceil(q*(Number(shop.duration)||20)/Math.max(1,Number(shop.workers)||1))}
+function shopCard(s){let waiting=tickets.filter(t=>t.shopId===s.id&&t.status==="waiting").length;let photo=s.photo?`<img class="shop-photo" src="${esc(s.photo)}" alt="صورة ${esc(s.name)}" onerror="this.outerHTML='<div class=\'empty-image\'>🏪</div>'">`:`<div class="empty-image">${s.icon||"🏪"}</div>`;let offerCount=(s.offers||[]).filter(o=>!o.endDate||o.endDate>=new Date().toISOString().slice(0,10)).length;let status=s.isOpen===false?'<span class="badge status-closed">مغلق الآن</span>':'<span class="badge status-open">مفتوح الآن</span>';let wait=estimateWait(s);return `<div class="card shop-card">${photo}<h3>${esc(s.name)}</h3><p>${esc(s.type)} — ${esc(s.area)}</p><div>${status}</div><div class="meta" style="margin-top:10px"><span>◷ انتظار متوقع: ${wait} دقيقة</span><span>● ${waiting} منتظر</span><span>🛍️ ${(s.services||[]).length} خدمات</span></div>${offerCount?`<span class="badge">🎁 ${offerCount} عرض متاح</span>`:""}<div class="admin-actions" style="margin-top:14px"><button class="secondary" onclick="openDetails(${s.id})">تفاصيل المحل</button><button class="primary" onclick="selectShop(${s.id})" ${s.isOpen===false||s.accepting===false?'disabled':''}>${s.isOpen===false?'المحل مغلق':s.accepting===false?'الحجز متوقف':'احجز دورك'}</button></div></div>`}
+
+function esc(s){return String(s).replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]))}
+function renderHome(){document.getElementById("homeShops").innerHTML=shops.map(shopCard).join("")||"<p>لا توجد محلات بعد.</p>"}
+function fillSelects(){let customerValue=document.getElementById("shopSelect").value,dashValue=document.getElementById("dashShopSelect").value,category=document.getElementById("customerCategory")?.value||"all";let customerShops=shops.filter(s=>category==="all"||s.type===category);let opts=customerShops.map(s=>`<option value="${s.id}">${esc(s.name)} — ${esc(s.area)}</option>`).join("");document.getElementById("shopSelect").innerHTML=opts||'<option value="">لا توجد أماكن في هذا التصنيف حاليًا</option>';let adminOpts=shops.map(s=>`<option value="${s.id}">${esc(s.name)} — ${esc(s.area)}</option>`).join("");document.getElementById("dashShopSelect").innerHTML=adminOpts;if(customerShops.some(s=>String(s.id)===customerValue))document.getElementById("shopSelect").value=customerValue;if(shops.some(s=>String(s.id)===dashValue))document.getElementById("dashShopSelect").value=dashValue}
+function updateBookingEstimate(){let id=Number(document.getElementById("shopSelect").value),shop=shops.find(x=>x.id===id),box=document.getElementById("bookingEstimate");if(!shop||!box)return;let waiting=tickets.filter(t=>t.shopId===id&&t.status==="waiting").length,mins=estimateWait(shop);box.innerHTML=`<b>وقت الانتظار المتوقع: ${mins} دقيقة</b><div class="small muted" style="margin-top:5px">يوجد ${waiting} عميل في الانتظار — ${shop.workers} عامل متاح</div><div class="small muted" style="margin-top:5px">${shop.isOpen===false?'المحل مغلق حاليًا':shop.accepting===false?'المحل مفتوح لكن استقبال الحجوزات متوقف':'الوقت تقديري وقد يتغير حسب سير العمل'}</div>`;let btn=document.querySelector('#bookingForm button.primary');if(btn)btn.disabled=shop.isOpen===false||shop.accepting===false}
+document.getElementById("shopSelect").addEventListener("change",updateBookingEstimate);
+function selectShop(id){showPage("customer");document.getElementById("shopSelect").value=id;updateBookingEstimate()}
+function updateShopState(){let sid=Number(document.getElementById("dashShopSelect").value),shop=shops.find(x=>x.id===sid);if(!shop)return;shop.isOpen=document.getElementById("shopOpenState").value==="open";shop.accepting=document.getElementById("shopBookingState").value==="yes";shop.workers=Math.max(1,Number(document.getElementById("shopWorkers").value)||1);save();renderAll();toast("تم تحديث حالة المحل") }
+function book(){let sid=Number(document.getElementById("shopSelect").value),name=document.getElementById("customerName").value.trim();let selectedShop=shops.find(s=>s.id===sid);if(!selectedShop||selectedShop.isOpen===false||selectedShop.accepting===false){toast("الحجز غير متاح حاليًا في هذا المحل");return}if(!name){toast("اكتب اسمك الأول");return}let shop=shops.find(s=>s.id===sid);let existing=tickets.filter(t=>t.shopId===sid);let num=existing.length?Math.max(...existing.map(t=>t.number))+1:1;let t={id:nextId++,shopId:sid,number:num,name,phone:document.getElementById("customerPhone").value.trim(),status:"waiting",created:new Date().toISOString()};tickets.push(t);currentTicket=t;let eta=Math.ceil(Math.max(0,tickets.filter(x=>x.shopId===sid&&x.status==="waiting"&&x.number<num).length)*(Number(shop.duration)||20)/Math.max(1,Number(shop.workers)||1));save();document.getElementById("ticketResult").classList.remove("hidden");document.getElementById("ticketResult").innerHTML=`<div class="ticket"><div class="muted small">تم إنشاء دورك في ${esc(shop.name)}</div><div class="ticket-num">#${String(num).padStart(2,"0")}</div><b>${esc(name)}</b><p class="muted">عدد المنتظرين قبلك: ${tickets.filter(x=>x.shopId===sid&&x.status==="waiting"&&x.number<num).length}</p><span class="badge">حالتك: في الانتظار</span><p><b>الانتظار المتوقع من الآن: ${eta} دقيقة</b></p></div><p class="muted small">احتفظ برقم دورك. في النسخة المنشورة سنضيف رابط متابعة وإشعارات.</p>`;toast("تم حجز الدور بنجاح");renderAll()}
+function activeOwnerShop(){return shops.find(s=>s.id===Number(document.getElementById("dashShopSelect").value))||shops[0]}
+function renderOwnerMedia(){let shop=activeOwnerShop();if(!shop)return;shop.photos=shop.photos||[];shop.offers=shop.offers||[];document.getElementById("ownerPhotoGallery").innerHTML=shop.photos.map((src,i)=>`<div class="thumb"><img src="${esc(src)}" alt="صورة المحل"><button class="danger" onclick="deleteShopPhoto(${shop.id},${i})" title="حذف الصورة">✕</button></div>`).join("")||'<p class="muted small">لم تُرفع صور إضافية بعد.</p>';document.getElementById("ownerOffersList").innerHTML=shop.offers.map((o,i)=>`<div class="offer-manage">${o.image?`<img src="${esc(o.image)}" style="width:100%;max-height:130px;object-fit:cover;border-radius:9px;margin-bottom:8px">`:""}<div class="row"><b>${esc(o.title||o)}</b><button class="danger" onclick="deleteOwnerOffer(${shop.id},${i})">حذف</button></div>${o.description?`<p class="muted small">${esc(o.description)}</p>`:""}${o.oldPrice||o.newPrice?`<div><s>${esc(o.oldPrice||"")}</s> <b>${esc(o.newPrice||"")}</b></div>`:""}${o.endDate?`<div class="small muted">ينتهي في: ${esc(o.endDate)}</div>`:""}</div>`).join("")||'<p class="muted small">لا توجد عروض مضافة حاليًا.</p>'}
+function readCompressedImage(file){return new Promise((resolve,reject)=>{if(!file||!file.type.startsWith("image/")){reject(new Error("اختار ملف صورة صالح"));return}let reader=new FileReader();reader.onload=()=>{let img=new Image();img.onload=()=>{let max=1100,scale=Math.min(1,max/Math.max(img.width,img.height)),canvas=document.createElement("canvas");canvas.width=Math.round(img.width*scale);canvas.height=Math.round(img.height*scale);canvas.getContext("2d").drawImage(img,0,0,canvas.width,canvas.height);resolve(canvas.toDataURL("image/jpeg",.76))};img.onerror=()=>reject(new Error("تعذر قراءة الصورة"));img.src=reader.result};reader.onerror=()=>reject(new Error("تعذر تحميل الصورة"));reader.readAsDataURL(file)})}
+async function uploadShopPhotos(files){let shop=activeOwnerShop();if(!shop||!files||!files.length)return;shop.photos=shop.photos||[];try{for(const file of Array.from(files)){if(shop.photos.length>=12){toast("الحد الأقصى 12 صورة للمحل");break}shop.photos.push(await readCompressedImage(file))}shop.photo=shop.photos[0]||shop.photo;save();renderAll();toast("تم حفظ صور المحل") }catch(e){toast(e.message||"تعذر رفع الصورة")}document.getElementById("ownerPhotos").value=""}
+function deleteShopPhoto(shopId,index){let shop=shops.find(s=>s.id===shopId);if(!shop)return;shop.photos.splice(index,1);if(shop.photo&&shop.photos.length===0)shop.photo="";else if(shop.photos.length)shop.photo=shop.photos[0];save();renderAll();toast("تم حذف الصورة")}
+async function addOwnerOffer(){let shop=activeOwnerShop();if(!shop)return;let title=document.getElementById("ownerOfferTitle").value.trim();if(!title){toast("اكتب اسم العرض الأول");return}let image="",file=document.getElementById("ownerOfferImage").files[0];try{if(file)image=await readCompressedImage(file)}catch(e){toast(e.message);return}shop.offers=shop.offers||[];shop.offers.push({title,description:document.getElementById("ownerOfferDesc").value.trim(),oldPrice:document.getElementById("ownerOfferOldPrice").value.trim(),newPrice:document.getElementById("ownerOfferNewPrice").value.trim(),endDate:document.getElementById("ownerOfferEnd").value,image,active:true});save();["ownerOfferTitle","ownerOfferDesc","ownerOfferOldPrice","ownerOfferNewPrice","ownerOfferEnd","ownerOfferImage"].forEach(id=>document.getElementById(id).value="");renderAll();toast("تم نشر العرض للعملاء")}
+function deleteOwnerOffer(shopId,index){let shop=shops.find(s=>s.id===shopId);if(!shop)return;shop.offers.splice(index,1);save();renderAll();toast("تم حذف العرض")}
+function renderDashboard(){let sid=Number(document.getElementById("dashShopSelect").value||shops[0]?.id),shop=shops.find(s=>s.id===sid);if(!shop)return;let q=tickets.filter(t=>t.shopId===sid).sort((a,b)=>a.number-b.number),waiting=q.filter(t=>t.status==="waiting"),served=q.filter(t=>t.status==="served");document.getElementById("dashShopName").textContent=shop.name;document.getElementById("shopOpenState").value=shop.isOpen===false?"closed":"open";document.getElementById("shopBookingState").value=shop.accepting===false?"no":"yes";document.getElementById("shopWorkers").value=shop.workers||1;document.getElementById("waitingCount").textContent=waiting.length;document.getElementById("servedCount").textContent=served.length;document.getElementById("currentNumber").textContent=served.length?("#"+served[served.length-1].number):"—";document.getElementById("queueList").innerHTML=q.length?q.map(t=>`<div class="queue-item"><div><b>#${String(t.number).padStart(2,"0")} — ${esc(t.name)}</b><div class="muted small">${new Date(t.created).toLocaleTimeString("ar-EG",{hour:"2-digit",minute:"2-digit"})}</div></div><span class="${t.status==="waiting"?"pill":"badge"}">${t.status==="waiting"?"منتظر":t.status==="served"?"تمت الخدمة":"ملغي"}</span></div>`).join(""):"<p class='muted'>لا يوجد عملاء في الطابور حاليًا.</p>";document.getElementById("ownerReviews").innerHTML=(shop.notes||[]).map((n,i)=>`<div class="review"><b>${esc(n.name||"عميل")}</b><p>${esc(n.text)}</p><input id="reply-${shop.id}-${i}" placeholder="اكتب رد المحل" value="${esc(n.reply||"")}"><button class="secondary" style="margin-top:8px" onclick="replyReview(${shop.id},${i})">حفظ الرد</button></div>`).join("")||"<p class='muted small'>لا توجد ملاحظات حتى الآن.</p>";renderOwnerMedia()}
+function replyReview(shopId,index){let shop=shops.find(x=>x.id===shopId);if(!shop||!shop.notes[index])return;shop.notes[index].reply=document.getElementById(`reply-${shopId}-${index}`).value.trim();save();renderAll();toast("تم حفظ رد المحل")}
+function callNext(){let sid=Number(document.getElementById("dashShopSelect").value),t=tickets.filter(x=>x.shopId===sid&&x.status==="waiting").sort((a,b)=>a.number-b.number)[0];if(!t){toast("لا يوجد عميل منتظر");return}t.status="served";save();renderAll();toast("تم استدعاء "+t.name+" — الدور #"+t.number)}
+function addWalkin(){let sid=Number(document.getElementById("dashShopSelect").value),name=prompt("اسم العميل الموجود بالمحل:");if(!name||!name.trim())return;let a=tickets.filter(t=>t.shopId===sid),num=a.length?Math.max(...a.map(t=>t.number))+1:1;tickets.push({id:nextId++,shopId:sid,number:num,name:name.trim(),status:"waiting",created:new Date().toISOString(),walkin:true});save();renderAll();toast("تمت إضافة العميل للطابور")}
+function resetQueue(){if(!confirm("متأكد إنك عايز تنهي الطابور الحالي؟"))return;let sid=Number(document.getElementById("dashShopSelect").value);tickets=tickets.filter(t=>t.shopId!==sid);save();renderAll();toast("تم تصفير طابور المحل")}
+let editingShopId=null;
+function parseLines(value,kind){return value.split("\n").map(x=>x.trim()).filter(Boolean).map(line=>{if(kind==="service"){let parts=line.split("|");return {name:(parts[0]||"").trim(),price:(parts[1]||"السعر عند المحل").trim()}}return line})}
+function addShop(){let name=document.getElementById("newShopName").value.trim(),area=document.getElementById("newShopArea").value.trim();if(!name||!area){toast("اكتب اسم المحل والمنطقة");return}let type=document.getElementById("newShopType").value;let data={name,area,type,icon:type.includes("حلاقة")||type.includes("صالون")?"✂️":"🏪",duration:Math.max(5,Number(document.getElementById("newShopDuration").value)||20),photo:document.getElementById("newShopPhoto").value.trim(),cover:document.getElementById("newShopCover").value.trim(),description:document.getElementById("newShopDescription").value.trim(),services:parseLines(document.getElementById("newShopServices").value,"service"),offers:parseLines(document.getElementById("newShopOffers").value,"offer")};if(editingShopId){let shop=shops.find(x=>x.id===editingShopId);Object.assign(shop,data);toast("تم تحديث بيانات المحل")}else{shops.push({id:Date.now(),...data});toast("تمت إضافة المحل بنجاح")}save();clearShopForm();renderAll()}
+function editShop(id){let s=shops.find(x=>x.id===id);if(!s)return;editingShopId=id;document.getElementById("newShopName").value=s.name;document.getElementById("newShopArea").value=s.area;document.getElementById("newShopType").value=s.type;document.getElementById("newShopDuration").value=s.duration||20;document.getElementById("newShopPhoto").value=s.photo||"";document.getElementById("newShopCover").value=s.cover||"";document.getElementById("newShopDescription").value=s.description||"";document.getElementById("newShopServices").value=(s.services||[]).map(x=>x.name+" | "+x.price).join("\n");document.getElementById("newShopOffers").value=(s.offers||[]).map(x=>typeof x==="string"?x:(x.title||"" )).join("\n");document.getElementById("shopFormTitle").textContent="تعديل بيانات المحل";document.getElementById("saveShopBtn").textContent="حفظ التعديلات";document.getElementById("cancelEditBtn").classList.remove("hidden");document.getElementById("newShopName").scrollIntoView({behavior:"smooth",block:"center"})}
+function clearShopForm(){editingShopId=null;["newShopName","newShopArea","newShopPhoto","newShopCover","newShopDescription","newShopServices","newShopOffers"].forEach(id=>document.getElementById(id).value="");document.getElementById("newShopDuration").value=20;document.getElementById("shopFormTitle").textContent="إضافة محل جديد";document.getElementById("saveShopBtn").textContent="إضافة المحل";document.getElementById("cancelEditBtn").classList.add("hidden")}
+function openDetails(id){let s=shops.find(x=>x.id===id);if(!s)return;document.getElementById("detailName").textContent=s.name;let cover=s.cover||s.photo;let gallery=(s.photos||[]).map(src=>`<img src="${esc(src)}" alt="صورة من المحل" style="width:100%;height:120px;object-fit:cover;border-radius:10px">`).join("");let services=(s.services||[]).length?`<h3>الخدمات والأسعار</h3><div class="service-list">${s.services.map(x=>`<div class="service"><b>${esc(x.name)}</b><strong>${esc(x.price)}</strong></div>`).join("")}</div>`:`<p class="muted">لم يضف المحل الخدمات بعد.</p>`;let currentOffers=(s.offers||[]).filter(x=>!x.endDate||x.endDate>=new Date().toISOString().slice(0,10));let offers=currentOffers.length?`<h3>العروض الحالية</h3><div class="offer-list">${currentOffers.map(x=>`<div class="offer">🎁 <div><b>${esc(x.title||x)}</b>${x.description?`<div class="small muted">${esc(x.description)}</div>`:""}${x.oldPrice||x.newPrice?`<div><s>${esc(x.oldPrice||"")}</s> <b>${esc(x.newPrice||"")}</b></div>`:""}${x.endDate?`<div class="small muted">ينتهي في ${esc(x.endDate)}</div>`:""}${x.image?`<img src="${esc(x.image)}" style="display:block;width:100%;max-height:140px;object-fit:cover;border-radius:9px;margin-top:8px">`:""}</div></div>`).join("")}</div>`:`<p class="muted small">لا توجد عروض معلنة حاليًا.</p>`;let reviews=(s.notes||[]).map((n,i)=>`<div class="review"><b>${esc(n.name||"عميل")}</b><p>${esc(n.text)}</p>${n.reply?`<div class="small" style="color:var(--blue)"><b>رد المحل:</b> ${esc(n.reply)}</div>`:""}</div>`).join("")||'<p class="muted small">لسه مفيش ملاحظات. كن أول من يشارك تجربته.</p>';document.getElementById("detailContent").innerHTML=`${cover?`<img class="detail-cover" src="${esc(cover)}" alt="${esc(s.name)}" onerror="this.style.display='none'">`:""}${gallery?`<div class="thumb-grid">${gallery}</div>`:""}<p class="muted">📍 ${esc(s.area)} · ${esc(s.type)}</p><p>${esc(s.description||"لا يوجد وصف مضاف للمحل حتى الآن.")}</p>${services}${offers}<div class="wait-box"><b>الانتظار المتوقع: ${estimateWait(s)} دقيقة</b><div class="small muted">${s.isOpen===false?'مغلق الآن':s.accepting===false?'مفتوح لكن الحجز متوقف':'مفتوح ويستقبل الحجوزات'}</div></div><h3>ملاحظات العملاء</h3><div>${reviews}</div><div class="card" style="margin-top:12px"><label>اكتب ملاحظتك عن المحل</label><input id="reviewerName" placeholder="اسمك (اختياري)"><textarea id="reviewText" rows="3" style="width:100%;padding:12px;border:1px solid #dce3ed;border-radius:11px;font:inherit" placeholder="احكيلنا عن تجربتك..."></textarea><button class="secondary" style="margin-top:10px" onclick="addReview(${s.id})">إرسال الملاحظة</button></div><p class="small muted">متوسط وقت الخدمة: ${s.duration||20} دقيقة</p><button class="primary" onclick="closeDetails();selectShop(${s.id})" ${s.isOpen===false||s.accepting===false?'disabled':''}>احجز دورك في المحل</button>`;document.getElementById("shopDetails").classList.remove("hidden")}
+function addReview(id){let shop=shops.find(x=>x.id===id),text=document.getElementById("reviewText").value.trim(),name=document.getElementById("reviewerName").value.trim();if(!text){toast("اكتب الملاحظة الأول");return}shop.notes=shop.notes||[];shop.notes.push({name:name||"عميل",text,created:new Date().toISOString(),reply:""});save();openDetails(id);toast("تمت إضافة ملاحظتك في النسخة التجريبية")}
+
+function closeDetails(){document.getElementById("shopDetails").classList.add("hidden")}
+
+function renderAdmin(){document.getElementById("adminShops").textContent=shops.length;document.getElementById("adminTickets").textContent=tickets.length;document.getElementById("adminActive").textContent=tickets.filter(t=>t.status==="waiting").length;document.getElementById("adminShopList").innerHTML=shops.map(s=>`<div class="queue-item"><div><b>${esc(s.name)}</b><div class="muted small">${esc(s.area)} — ${esc(s.type)} · ${(s.services||[]).length} خدمات · ${(s.offers||[]).length} عروض</div></div><div class="admin-actions"><button class="secondary" onclick="editShop(${s.id})">تعديل</button><button class="danger" onclick="deleteShop(${s.id})">حذف</button></div></div>`).join("")}
+function deleteShop(id){if(!confirm("حذف المحل وكل أدواره؟"))return;shops=shops.filter(s=>s.id!==id);tickets=tickets.filter(t=>t.shopId!==id);save();renderAll()}
+function renderAll(){renderCategoryOptions();renderHome();fillSelects();renderDashboard();renderAdmin();updateBookingEstimate()}
+applyTheme("customer");renderAll();updateBookingEstimate();
+</script>
+</body></html>
